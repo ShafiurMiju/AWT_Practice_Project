@@ -1,3 +1,5 @@
+import { IsNotEmpty } from "class-validator"
+
 export class CreateAdministratorDto {
     name: string
 
@@ -7,6 +9,7 @@ export class CreateAdministratorDto {
 
     dob: Date
 
+    @IsNotEmpty({message:"salary can not empty"})
     salary: number
 
     address: string
