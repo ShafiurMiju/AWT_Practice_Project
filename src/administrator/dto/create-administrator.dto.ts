@@ -7,10 +7,9 @@ export class CreateAdministratorDto {
     @IsNotEmpty({message:"Email can not empty"})
     email: string
 
-    @IsNotEmpty({message:"Id can not empty"})
     uid: number
 
-    @IsNotEmpty({message:"ID can not empty"})
+    @IsNotEmpty({message:"Password can not empty"})
     password: string
 
     @IsNotEmpty({message:"Date of Birth can not empty"})
