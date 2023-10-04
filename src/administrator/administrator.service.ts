@@ -32,12 +32,16 @@ export class AdministratorService {
     }
   }
 
-  async viewAllAdministrator(allData):Promise<any>{
+  async viewAllAdministrator(allData):Promise<object>{
     return await this.administratorRepository.find(allData);
   }
 
-  async searchAdministratorById(data:searchManagerDTO):Promise<any>{
-    return this.administratorRepository.findBy(data)
+  async searchAdministratorById(data:searchManagerDTO):Promise<object>{
+    return await this.administratorRepository.findBy(data)
+  }
+
+  async deleteAdministrator(data:number):Promise<object>{
+    return await this.administratorRepository.delete(data)
   }
 
 }

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, UsePipes, Param, ValidationPipe } from '@nestjs/common';
+import { Controller, Get, Post, Body, UsePipes, Param, ValidationPipe, Delete } from '@nestjs/common';
 import { AdministratorService } from './administrator.service';
 import { CreateAdministratorDto } from './dto/create-administrator.dto';
 import { LoginAdministratorDto } from './dto/loginAdministrator.dto';
@@ -33,6 +33,11 @@ export class AdministratorController {
   @Get("/searchbyid")
   async searchAdministratorById(@Body() id:searchManagerDTO):Promise<any>{
     return await this.administratorService.searchAdministratorById(id)
+  }
+
+  @Delete("/deleteadministrator/:uid")
+  async deleteAdministrator(@Param('uid') uid:number):Promise<any>{
+    return await this.administratorService.deleteAdministrator(uid)
   }
 
 }
