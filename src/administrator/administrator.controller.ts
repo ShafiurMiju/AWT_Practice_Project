@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, UsePipes, Param, ValidationPipe, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, UsePipes, Param, ValidationPipe, Delete, UseInterceptors, UploadedFile,  } from '@nestjs/common';
 import { AdministratorService } from './administrator.service';
 import { CreateAdministratorDto } from './dto/create-administrator.dto';
 import { LoginAdministratorDto } from './dto/loginAdministrator.dto';
 import { searchManagerDTO } from './dto/searchAdministrator.dto';
+import { FileInterceptor } from '@nestjs/platform-express';
 
 @Controller('administrator')
 export class AdministratorController {
@@ -38,6 +39,12 @@ export class AdministratorController {
   @Delete("/deleteadministrator/:uid")
   async deleteAdministrator(@Param('uid') uid:number):Promise<any>{
     return await this.administratorService.deleteAdministrator(uid)
+  }
+
+  @Post('/upload')
+  @UseInterceptors(FileInterceptor('myfile'))
+  async uploadFile(@UploadedFile() file: Express.Multer.File) {
+    return await file;
   }
 
 }
