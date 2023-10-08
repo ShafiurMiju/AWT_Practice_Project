@@ -23,6 +23,8 @@ export class CreateAdministratorDto {
     @IsNotEmpty({message:"Address can not empty"})
     address: string
 
+    
+
 }
 
 

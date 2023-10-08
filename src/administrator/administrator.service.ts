@@ -8,11 +8,10 @@ import { searchManagerDTO } from './dto/searchAdministrator.dto';
 
 @Injectable()
 export class AdministratorService {
-
   constructor(@InjectRepository(administratorEntity) private administratorRepository: Repository<administratorEntity>) {}
 
   async welcome():Promise<string>{
-    return await "Welcome Back"
+    return await "Welcome Back, Administrator"
   }
 
   async createAdministrator(administratorData: CreateAdministratorDto):Promise<CreateAdministratorDto>{
@@ -43,6 +42,11 @@ export class AdministratorService {
   async deleteAdministrator(data:number):Promise<object>{
     return await this.administratorRepository.delete(data)
   }
+
+  async upload(file:any):Promise<any>{
+    return await file;
+  }
+
 
 }
 
